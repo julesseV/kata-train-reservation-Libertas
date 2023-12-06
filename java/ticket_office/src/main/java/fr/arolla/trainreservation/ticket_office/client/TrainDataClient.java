@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class TrainDataClient {
@@ -18,7 +19,7 @@ public class TrainDataClient {
     restTemplate = new RestTemplate();
   }
 
-  public ArrayList<Seat> getTrainDataByID(String trainId) {
+  public List<Seat> getTrainDataByID(String trainId) {
     String json = restTemplate.getForObject("http://127.0.0.1:8081/data_for_train/" + trainId, String.class);
 
     ObjectMapper objectMapper = new ObjectMapper();
