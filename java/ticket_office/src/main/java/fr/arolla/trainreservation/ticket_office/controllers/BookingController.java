@@ -4,6 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.arolla.trainreservation.ticket_office.Seat;
+import fr.arolla.trainreservation.ticket_office.service.BookingReferenceService;
+import fr.arolla.trainreservation.ticket_office.service.TrainDataService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +21,12 @@ import java.util.Map;
 public class BookingController {
 
   private final RestTemplate restTemplate;
+
+  @Autowired
+  private BookingReferenceService bookingReferenceService;
+
+  @Autowired
+  private TrainDataService trainDataService;
 
   BookingController() {
     restTemplate = new RestTemplate();
